@@ -82,9 +82,6 @@ rules:
       - "signers"
     resourceNames:
     - "kubernetes.io/legacy-unknown"
-{{- range .Values.global.certSigners }}
-    - {{ . | quote }}
-{{- end }}
     verbs: ["approve"]
 
   # Used by Istiod to verify the JWT tokens
@@ -138,7 +135,4 @@ rules:
   - apiGroups: [""]
     verbs: [ "get", "watch", "list", "update", "patch", "create", "delete" ]
     resources: [ "services" ]
-  - apiGroups: [""]
-    verbs: [ "get", "watch", "list", "update", "patch", "create", "delete" ]
-    resources: [ "serviceaccounts"]
 {{- end }}
